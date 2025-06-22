@@ -1,11 +1,11 @@
-use super::frequency::Frequency;
+use super::frequency::CompoundingFrequency;
 
-pub fn times_compounded(investment_term: u32, frequency: Frequency) -> u32 {
+pub fn times_compounded(investment_term: u32, frequency: CompoundingFrequency) -> u32 {
     match frequency {
-        Frequency::AtMaturity => 1,
-        Frequency::Yearly => investment_term,
-        Frequency::Quarterly => investment_term * 4,
-        Frequency::Monthly => investment_term * 12,
+        CompoundingFrequency::AtMaturity => 1,
+        CompoundingFrequency::Yearly => investment_term,
+        CompoundingFrequency::Quarterly => investment_term * 4,
+        CompoundingFrequency::Monthly => investment_term * 12,
     }
 }
 
@@ -17,7 +17,7 @@ mod tests {
     fn at_maturity_compounded_once() {
         let term = 12;
 
-        let result = times_compounded(term, Frequency::AtMaturity);
+        let result = times_compounded(term, CompoundingFrequency::AtMaturity);
 
         assert_eq!(result, 1);
     }
@@ -26,7 +26,7 @@ mod tests {
     fn yearly_compounded_term_length() {
         let term = 3;
 
-        let result = times_compounded(term, Frequency::Yearly);
+        let result = times_compounded(term, CompoundingFrequency::Yearly);
 
         assert_eq!(result, term);
     }
@@ -35,7 +35,7 @@ mod tests {
     fn quarterly_compounded_four_times_term_length() {
         let term = 1;
 
-        let result = times_compounded(term, Frequency::Quarterly);
+        let result = times_compounded(term, CompoundingFrequency::Quarterly);
 
         assert_eq!(result, term * 4);
     }
@@ -44,7 +44,7 @@ mod tests {
     fn monthly_compounded_twelve_times_term_length() {
         let term = 1;
 
-        let result = times_compounded(term, Frequency::Monthly);
+        let result = times_compounded(term, CompoundingFrequency::Monthly);
 
         assert_eq!(result, term * 12);
     }

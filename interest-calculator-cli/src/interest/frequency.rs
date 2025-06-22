@@ -1,4 +1,4 @@
-pub enum Frequency {
+pub enum CompoundingFrequency {
     Monthly,
     Quarterly,
     Yearly,
