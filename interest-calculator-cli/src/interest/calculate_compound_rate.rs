@@ -1,6 +1,6 @@
 use super::frequency::CompoundingFrequency;
 
-fn calculate_compound_rate(
+pub fn calculate_compound_rate(
     annual_rate: f32,
     term_length: u32,
     frequency: CompoundingFrequency,
